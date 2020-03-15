@@ -7,8 +7,8 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster AS build
 WORKDIR /src
-COPY ["HerokuCore/HerokuCore.csproj", "HerokuCore/"]
-RUN dotnet restore "HerokuCore/HerokuCore.csproj"
+COPY ["CICD/HerokuCore/HerokuCore.csproj", "HerokuCore/"]
+RUN dotnet restore "CICD/HerokuCore/HerokuCore.csproj"
 COPY . .
 WORKDIR "/src/HerokuCore"
 RUN dotnet build "HerokuCore.csproj" -c Release -o /app/build
